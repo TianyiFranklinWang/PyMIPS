@@ -1,5 +1,6 @@
-from myhdl import block, Signal, instances, always_comb, intbv
 import math
+
+from myhdl import block, Signal, instances, always_comb, intbv
 
 
 @block
