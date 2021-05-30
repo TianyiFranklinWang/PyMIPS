@@ -6,7 +6,7 @@ import ctrl_encode
 
 
 @block
-def alu(a, b, aluop, c, compare):
+def alu(a, b, aluop):
     c = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
     compare = Signal(0)
 
