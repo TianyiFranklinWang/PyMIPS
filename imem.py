@@ -13,12 +13,14 @@ from myhdl import block, Signal, instances, always_comb, intbv
 
 @block
 def imem(addr, dout):
-    dout = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
-
-    imem = [intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)) for i in range(1024)]
+    imem = [Signal(intbv(0, min=-(math.pow(2, 32)), max=(math.pow(2, 32) - 1))) for _ in range(1024)]
+    with open("./imem.txt") as data:
+        lines = data.readlines()
+        for index, line in enumerate(lines):
+            imem[index] = Signal(intbv(int(line, 16))[32:])
 
     @always_comb
-    def comb():
+    def read():
         dout.next = imem[addr]
 
     return instances()

@@ -8,33 +8,37 @@
 """
 import math
 
-from myhdl import block, Signal, instances, always, intbv, bin
+from myhdl import block, Signal, instances, always, intbv, bin, always_comb
 
 
 @block
 def dmem(clk, addr, din, be, wren, dout):
-    dout = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
-
-    dmem = [intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)) for i in range(1024)]
+    dmem = [Signal(intbv(0, min=-(math.pow(2, 32)), max=(math.pow(2, 32) - 1))) for _ in range(1024)]
+    with open("./dmem.txt") as data:
+        lines = data.readlines()
+        for index, line in enumerate(lines):
+            dmem[index] = Signal(intbv(int(line, 2))[32:])
 
     @always(clk.posedge)
-    def seq():
+    def write():
         if wren:
             if bin(be) == '1111':
-                dmem[addr] = din
+                dmem[addr].next = din
             elif bin(be) == '1100':
-                dmem[addr][31:16] = din[15:0]
+                dmem[addr][31:16].next = din[15:0]
             elif bin(be) == '0011':
-                dmem[addr][15:0] = din[15:0]
+                dmem[addr][15:0].next = din[15:0]
             elif bin(be) == '1000':
-                dmem[addr][31:24] = din[7:0]
+                dmem[addr][31:24].next = din[7:0]
             elif bin(be) == '0100':
-                dmem[addr][23:16] = din[7:0]
+                dmem[addr][23:16].next = din[7:0]
             elif bin(be) == '0010':
-                dmem[addr][15:8] = din[7:0]
+                dmem[addr][15:8].next = din[7:0]
             elif bin(be) == '0001':
-                dmem[addr][7:0] = din[7:0]
+                dmem[addr][7:0].next = din[7:0]
 
+    @always_comb
+    def read():
         dout.next = dmem[addr]
 
     return instances()

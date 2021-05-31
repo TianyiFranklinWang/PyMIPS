@@ -6,18 +6,13 @@
 @Time    : 2021/05/31 16:33
 @Desc    : An implementation of MIPS ALU
 """
-import math
-
-from myhdl import block, always_comb, Signal, intbv, instances, bin
+from myhdl import block, always_comb, instances, bin
 
 import ctrl_encode
 
 
 @block
 def alu(a, b, aluop, c, compare):
-    c = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
-    compare = Signal(0)
-
     @always_comb
     def calculate():
         c.next = {bin(ctrl_encode.ALUOp_NOP): lambda: b,
