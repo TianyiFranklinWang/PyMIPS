@@ -14,7 +14,7 @@ import ctrl_encode
 
 
 @block
-def alu(a, b, aluop):
+def alu(a, b, aluop, c, compare):
     c = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
     compare = Signal(0)
 

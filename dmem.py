@@ -12,7 +12,7 @@ from myhdl import block, Signal, instances, always, intbv, bin
 
 
 @block
-def dmem(clk, addr, din, be, wren):
+def dmem(clk, addr, din, be, wren, dout):
     dout = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
 
     dmem = [intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)) for i in range(1024)]

@@ -12,7 +12,7 @@ from myhdl import block, Signal, instances, always_comb, intbv
 
 
 @block
-def imem(addr):
+def imem(addr, dout):
     dout = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
 
     imem = [intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)) for i in range(1024)]

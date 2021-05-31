@@ -12,7 +12,7 @@ from myhdl import block, Signal, instances, always_seq, intbv
 
 
 @block
-def regfile(clk, rst, ra, rb, rw, busw, regwr):
+def regfile(clk, rst, ra, rb, rw, busa, busb, busw, regwr):
     busa = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
     busb = Signal(intbv(0, min=-(math.pow(2, 31)), max=(math.pow(2, 31) - 1)))
 
