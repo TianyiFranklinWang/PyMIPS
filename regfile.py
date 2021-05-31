@@ -1,3 +1,11 @@
+"""
+@Author  : Tianyi Wang
+@License : GPL-3.0
+@Contact : 2019302443@mail.nwpu.edu.cn
+@File    : regfile.py
+@Time    : 2021/05/31 16:33
+@Desc    : An implementation of MIPS register model
+"""
 import math
 
 from myhdl import block, Signal, instances, always_seq, intbv

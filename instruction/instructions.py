@@ -1,3 +1,11 @@
+"""
+@Author  : Tianyi Wang
+@License : GPL-3.0
+@Contact : 2019302443@mail.nwpu.edu.cn
+@File    : instructions.py
+@Time    : 2021/05/31 16:33
+@Desc    : Global variables of MIPS instructions
+"""
 from myhdl import intbv
 
 # OP

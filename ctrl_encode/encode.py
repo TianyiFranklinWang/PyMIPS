@@ -1,3 +1,11 @@
+"""
+@Author  : Tianyi Wang
+@License : GPL-3.0
+@Contact : 2019302443@mail.nwpu.edu.cn
+@File    : encode.py
+@Time    : 2021/05/31 16:33
+@Desc    : Customized control signals
+"""
 from myhdl import intbv
 
 # NPC control signal

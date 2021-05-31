@@ -1,3 +1,11 @@
+"""
+@Author  : Tianyi Wang
+@License : GPL-3.0
+@Contact : 2019302443@mail.nwpu.edu.cn
+@File    : imem.py
+@Time    : 2021/05/31 16:33
+@Desc    : An implementation of instruction memory model
+"""
 import math
 
 from myhdl import block, Signal, instances, always_comb, intbv
