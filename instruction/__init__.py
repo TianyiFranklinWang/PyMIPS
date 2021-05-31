@@ -1,1 +1,1 @@
-from .instruction_def import *
+from .instructions import *
